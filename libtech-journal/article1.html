@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sherry Academic Journal</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <a href="coverpage.html"><figure class="headpicture"><img src="graphics/header.jpg" alt="header"> </figure></a>     
+    <h1>Improving the presentation of library data using FRBR and Linked data</h1>
+    <h3 class=Sherry>By Anne-Lena Westrum, Asgeir Rekkavik and Kim Talleras</h3>
+    </header>
+   <main>
+    <nav class="nav">
+      <ul>
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#pode">The Pode Project</a></li>
+        <li><a href="#way">Finding the Way Through Library Hit Lists</a></li>
+        <li><a href="#library">Library Standards</a></li>
+        <li><a href="#marc">FRBRization of MARC Records</a></li>
+        <li><a href="#clean">The Clean Up Process</a></li>
+        <li><a href="#outcome">Outcomes</a></li>
+        <li><a href="#summary">Summary</a></li>
+        <li><a href="#about">About The Authors</a></li>
+        <li><a href="#footnote">Footnotes &amp; References</a></li></ul>
+    </nav>
+     <article class=zhengwen>
+    <h3 id="abstract">ABSTRACT</h3>
+    <p>When a library end-user searches the online catalogue for works by a particular author, he will typically get a long list that contains different translations and editions of all the books by that author, sorted by title or date of issue. As an attempt to make some order in this chaos, the Pode project has applied a method of automated FRBRizing based on the information contained in MARC records. The project has also experimented with RDF representation to demonstrate how an author's complete production can be presented as a short and lucid list of unique works, which can easily be browsed by their different expressions and manifestations. Furthermore, by linking instances in the dataset to matching or corresponding instances in external sets, the presentation has been enriched with additional information about authors and works.</p>
+    <h3 id="introduction">INTRODUCTION</h3>
+    <p>After years of delay, it seems like Oslo is finally getting its new public library. At least there are concrete plans for a new, large and innovative building. The plans, of course, primarily concern the physical space: How can the building contribute to modern information services, and which features of a modern public library should it enable and encourage? In connection to such questions, many interesting discussions are taking place. One of them deals with the traditional axis point of the library: The document collection.</p>
+    <p>While there is a rapid development going on in how we think about library buildings, their means and objectives, we are also witnessing a parallel digital revolution, pushing forward new thoughts and solutions on collection development and distribution. With the expansion of the Web, online catalogues have a new context that involves both opportunities and challenges <a href="#coyle">(Coyle, 2010)</a>. The opportunities are related to the effective infrastructure for sharing and dissemination. Among other things, the challenges relate to the existing library standards for document description metadata. These standards were made in a different technological era.</p>
+    <h3 id="pode">THE PODE PROJECT</h3>
+    <p>The plans for a new library building and the discussions about library services affected by these plans have given the Oslo public library an indirect opportunity to examine how their metadata can be used in new contexts and in ways that contribute to better services. The independent Pode project<a href="#a">[1]</a>, funded by ABM Utvikling<a href="#b">[2]</a>, but located at the Oslo Public Library, has done exactly that. The project has, during the last few years, been experimenting with descriptive metadata related to mash ups, reference models such as FRBR (IFLA Study Group on the Functional Requirements for Bibliographic Records, 1998), new generations of OPACs and Linked Data. This work has led to at least one central insight: One cannot create better services, based on already existing metadata, than what the quality of the metadata will support. In this article we describe a subproject of Pode dealing with (NOR)MARC<a href="#c">[3]</a> records describing manifestations related to the Norwegian authors Knut Hamsun and Per Petterson.</p>
+    <h3 id="way">FINDING THE WAY THROUGH LIBRARY HIT LISTS</h3>
+    <p>Knut Hamsun (1859-1952) is the most prominent novelist in Norway and one of three Norwegian Nobel laureates in literature. His literary production includes about 30 novels, a few plays and collections of short stories, one collection of poetry and some non-fiction and biographical writings. Altogether Hamsuna production counts a total of 40 works; it is a bibliography that a library user should be able to browse easily. However, the image that meets the library user is quite different. In the online catalogue at Oslo Public Library, a qualified search for Hamsun, Knut as author will produce a list of 585 hits (as of November 11th, 2011). This is of course way too many hits to provide for an author who wrote 40 books. Notice that this is the result of an advanced qualified search. A more typical simple search, which is what most library users would try, provides an even longer list.</p>
+    <p>The problem is that the online catalogue does not distinguish between an author's different works and different versions of one work. In our list of 585 hits, as many as 63 correspond to different representations of one novel: Hunger. These would be different editions, different formats and translations into different languages. The users must of course be able to choose whether they want the book, the audio book or the movie, and they must be able to choose what language they want to read the book in, but to most users it is more disturbing than useful when the OPAC makes them choose between more than 20 different editions of Hunger in the Norwegian language<a href="#d">[4]</a>.</p>
+    <h3 id="library">LIBRARY STANDARDS</h3>
+    <p>The library catalogue has traditionally focused on describing physical objects. Each manifestation of a book is represented by a separate record, and there are no functional connections between records that describe manifestations of the same work. A library user, who searches the online catalogue for a particular title might therefore sign up on a waiting list to borrow one particular edition of a classic novel without realizing that numerous other editions of the same book are already available. Another user might end up not getting the book at all if he accidentally picked an edition that no longer has available copies. The Pode project has based its experiments on a hypothesis that library users are typically interested in finding a particular title, not a particular edition of that title, and that this interest is especially typical for fictional works, where different editions usually have identical content. From the perspective of the library system, the user should ideally be able to make a reservation for a title without having to choose between different editions. Of course, those who do care about editions should still have the opportunity to specify this, but why should everyone else be forced to pick?</p>
+    <h3 id="marc">FRBRIZATION OF MARC RECORDS</h3>
+    <p>The Pode project used a tool developed by the Norwegian University of Science and Technology for automated FRBRization of MARC records <a href="#Aa">(Aalberg, 2006)</a>. The tool uses XSL transformations on catalogue exports in the MarcXchange format to sort the data within bibliographic records based on which FRBR entities the data applies to.</p>
+    <h3 id="clean">THE CLEAN UP PROCESS</h3>
+    <p>In brief, the clean up process mainly consisted of identifying and adding original and uniform titles to records where this was missing, adding information about individual works and short stories collected in one volume, and setting indicators to distinguish between significant work titles and non-significant titles. In addition some time was spent correcting typos and errors. Altogether approximately 60 hours was spent cleaning up the productions of Knut Hamsun and Per Petterson, including the time used to determine the rules for correction.</p>
+    <h3 id="outcome">OUTCOMES</h3>
+    <p>While the first attempt at FRBRization identified 149 works by Hamsun, the list was further reduced to a number of 84 after cleaning up the MARC records. In the case of Per Petterson, we saw an increase in the number of works from 14 to 41, due to the adding of titles of individual short stories and essays to some catalogue records. The resulting lists of works corresponded almost exactly with the actual bibliographies of the two authors. The only exception being one work by Hamsun which was listed by the Norwegian national library's Hamsun bibliography, but missing in Oslo public library鈥檚 collection. The clean up process thereby unintentionally provided us with a method for identifying missing works in the library collection. This is otherwise a tedious procedure when you are dealing with long lists of hundreds of manifestations.</p>
+    <h3 id="summary">SUMMARY</h3>
+    <p>In light of the development of the Web and modern principles of metadata quality, it can be tempting to immediately convert library data to a more linked data-friendly format like RDF. On the basis of what we have, the MARC records are not yet that simple. <a href="#Ni">Nilsson (2010)</a> presents two models of metadata harmonization. Vertical harmonization increases interoperability within a given set of standards. Horizontal harmonization contributes to interoperability between various standards not given in advance. The Pode projects tells us that a conversion of existing traditions to new standards can be problematic in relation to both models of harmonization. They also tell us that a vertical clean-up helps a lot in order to make it easier to achieve horizontal effects.</p>
+    <p>The experiments have been performed on a limited set of data. It is hard to estimate how comprehensive the challenges would be when conducting conversions of larger data sets at the Oslo Public Library. The experiments conducted have shown, however, that a conversion in accordance with a reference model such as FRBR and principles for linked data provides some immediate benefits in the form of cleaner and more browseable results lists, and in opportunities to utilize external quality data the metadata quality increases. These are experiences that may be important in new projects, particularly in light of the plans for a new, forward looking and modern library.</p>
+    <h3 id="about">ABOUT THE AUTHORS</h3>
+    <p> Anne-Lena Westrum has a degree in multimedia design and is working as a project manager at Oslo Public Library. She is currently studying interaction design and user behavior at Gjovik University College, while managing two new user centered projects at the library.</p>
+    <p>Asgeir Rekkavik is a librarian at Oslo Public Library. He has been involved in several RDF and linked data related projects.</p>
+    <p>Kim Talleras is a doctoral student at the Department of Archivistics, Library and Information Science at Oslo and Akershus University College of Applied Sciences. He is working with issues related to metadata and semantic interoperability.</p>
+    <h3>ACKNOWLEDGEMENTS</h3>
+    <p>The Pode project would not have been possible without the support of the Norwegian Archive, Library and Museum authority and the contribution from Oslo University College in cooperation with the Norwegian Library Laboratory.</p>
+    <p>The article summarizes a 3 year long project with work efforts from an interdisciplinary team at Oslo Public library. The team wishes to extend a special thanks to Associate Professor Trond Aalberg at Norwegian University of Science and Technology and Magnus Enger at Libriotech for important contributions making the end result possible.</p>
+     </article>
+     <div class="footnote">
+    <h3 id="footnote" >NOTES</h3>
+     <ol>
+      <li id="a">For more information about the Oslo Public Library, visit <a href="https://www.visitoslo.com/en/product/?TLp=182580">https://www.visitoslo.com/en/product/?TLp=182580</a></li>
+
+      <li id="b">ABM-utvikling is the former Norwegian authority for libraries, archives and museums</li>
+
+      <li id="c">NORMARC was the Norwegian dialect of MARC.</li> 
+
+      <li id="d">Pisanski and Zumer (2010) indicate that users prefer a more overall orientation into a bibliographic universe.</li>
+     </ol>
+       <h3>REFERENCES</h3>
+       <ul>
+         <li id="Aa">Aalberg, T. (2006).<a href=" https://link.springer.com/chapter/10.1007/11863878_41">A Tool for Converting from MARC to FRBR.</a>ERCIM News, (66).</li>
+         <li id="Coyle">Coyle, K. (2010). <a href= "https://journals.ala.org/index.php/ltr/article/view/4630">Library data in a modern context.</a>Library Technology Reports, 46(1), 5-13. </li>
+         <li id="Ni">Nilson, M. (2010). <a href="http://kmr.nada.kth.se/papers/SemanticWeb/FromInteropToHarm-MikaelsThesis.pdf">From interoperability to harmonization in metadata standardization: Designing an evolvable framework for metadata harmonization.</a> Stockholm: Kungliga Tekniska Hagskolan.</li>
+       </ul>
+     </div>
+    </main>
+    <aside calss="aside">
+      <p class=ads>Advertisements</p>
+      <a href="dummy.html">
+        <img src="graphics/ads.png" alt="ads"></a>
+    </aside>
+  </body>
+</html>
